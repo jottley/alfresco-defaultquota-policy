@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="defaultQuota" class="org.alfresco.extension.quota.DefaultQuotaPolicy" init-method="init">
+		<property name="policyComponent">
+			<ref bean="policyComponent" />
+		</property>
+		<property name="contentUsageService">
+			<ref bean="contentUsageImpl" />
+		</property>
+		<property name="nodeService">
+			<ref bean="nodeService" />
+		</property>
+		<!-- The default quota for new users (in bytes) 2GB-->
+		<property name="defaultQuota">
+			<value>2147483648</value>
+		</property>
+	</bean>
+	
+</beans>
